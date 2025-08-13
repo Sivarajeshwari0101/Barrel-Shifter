@@ -1,0 +1,25 @@
+module barrel_shifter_left_tb;
+
+    reg  [3:0] data_in;
+    reg  [1:0] shift_amt;
+    wire [3:0] data_out;
+
+    barrel_shifter_left dut (
+        .data_in(data_in),
+        .shift_amt(shift_amt),
+        .data_out(data_out)
+    );
+
+    initial begin
+        data_in = 4'b1001; shift_amt = 2'b00; #10;
+        data_in = 4'b1001; shift_amt = 2'b01; #10;
+        data_in = 4'b1001; shift_amt = 2'b10; #10;
+        data_in = 4'b1001; shift_amt = 2'b11; #10;
+
+        data_in = 4'b0110; shift_amt = 2'b01; #10;
+        data_in = 4'b1111; shift_amt = 2'b10; #10;
+
+        $finish;
+    end
+
+endmodule
